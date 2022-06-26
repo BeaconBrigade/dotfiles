@@ -52,9 +52,39 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kyazdani42/nvim-tree.lua'
 
+" lightline
+Plug 'itchyny/lightline.vim'
+
+" git 
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
+"
+" Miscellaneous
+"
 set tabstop=4
+
+"
+" lightline
+"
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+"
+" git signify
+"
+set updatetime=100
 
 "
 " Theme
