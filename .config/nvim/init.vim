@@ -59,6 +59,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
+" font
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 "
