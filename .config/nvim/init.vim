@@ -68,6 +68,10 @@ call plug#end()
 " Miscellaneous
 "
 set tabstop=4
+au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+let g:rustfmt_autosave = 1
+nnoremap <nowait><silent> <C-L> :noh<CR>
 
 "
 " lightline
@@ -94,7 +98,8 @@ set updatetime=100
 " 
 "colorscheme nord
 "colorscheme moonfly
-colorscheme base16-twilight
+"colorscheme base16-twilight
+colorscheme base16-tomorrow-night
 
 "
 " Telescope
@@ -275,5 +280,4 @@ require('nvim-treesitter.configs').setup {
 require('hlargs').setup()
 EOF
 
-let g:rustfmt_autosave = 1
 
