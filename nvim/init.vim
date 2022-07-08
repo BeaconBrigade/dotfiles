@@ -64,10 +64,6 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'weilbith/nvim-code-action-menu'
 Plug 'williamboman/nvim-lsp-installer'
 
-" File explorer
-Plug 'kyazdani42/nvim-web-devicons' 
-Plug 'kyazdani42/nvim-tree.lua'
-
 " lightline
 Plug 'itchyny/lightline.vim'
 
@@ -116,11 +112,6 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-"
-" nvim-tree
-"
-lua require("nvim-tree").setup()
 
 " ------------------------------------
 " j-hui/fidget.nvim
