@@ -10,6 +10,10 @@ nvim:
 zsh:
 	cat zsh/.zshrc > ~/.zshrc
 
+.PHONY: tmux
+tmux:
+	cat tmux/.tmux.conf > ~/.tmux.conf
+
 .PHONY: add-nvim
 add-nvim:
 	cat ~/.config/nvim/init.vim > nvim/init.vim
@@ -17,3 +21,7 @@ add-nvim:
 .PHONY: add-zsh
 add-zsh:
 	cat ~/.zshrc > zsh/.zshrc
+
+.PHONY: add-tmux
+add-tmux:
+	cat ~/.tmux.conf > tmux/.tmux.conf
