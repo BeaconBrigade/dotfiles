@@ -123,7 +123,7 @@ fi
 source "$HOME/.config/rustlang/autocomplete/rustup"
 if ! command -v rust-analyzer &> /dev/null
 then
-  apt-get install rust-analyzer
+  brew install rust-analyzer
 fi
 if ! cargo audit --version &> /dev/null; then
   cargo install cargo-audit --features=fix
