@@ -1,3 +1,18 @@
+"
+" Miscellaneous
+"
+set tabstop=4
+set shiftwidth=4 
+set expandtab
+set smartindent
+nnoremap <nowait><silent> <C-L> :noh<CR>
+set number relativenumber
+set nu rnu
+set scrolloff=10
+set mouse=a
+set incsearch
+set signcolumn=yes
+
 call plug#begin('~/.vim/plugged')
 
 " Collection of common configurations for the Nvim LSP client
@@ -42,6 +57,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'j-hui/fidget.nvim'
 Plug 'kosayoda/nvim-lightbulb'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'm-demare/hlargs.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'simrat39/rust-tools.nvim'
@@ -64,14 +80,6 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-"
-" Miscellaneous
-"
-set tabstop=4
-au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-let g:rustfmt_autosave = 1
-nnoremap <nowait><silent> <C-L> :noh<CR>
 
 "
 " lightline
@@ -119,11 +127,6 @@ lua require("nvim-tree").setup()
 " ------------------------------------
 "
 lua require("fidget").setup()
-
-"
-" Mouse mode
-"
-set mouse=a
 
 " ------------------------------------
 " kosayoda/nvim-lightbulb
@@ -194,6 +197,7 @@ local opts = {
 }
 require('rust-tools').setup(opts)
 EOF
+let g:rustfmt_autosave = 1
 
 " Configure LSP code navigation shortcuts
 " as found in :help lsp
