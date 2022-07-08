@@ -2,14 +2,18 @@
 help:
 	$(info Choose a target, `nvim`, `zsh`, `add-nvim`, `add-zsh`)
 
-nvim: nvim/init.vim
+.PHONY: nvim
+nvim:
 	cat nvim/init.vim > ~/.config/nvim/init.vim
 
-zsh: zsh/.zshrc
+.PHONY: zsh
+zsh:
 	cat zsh/.zshrc > ~/.zshrc
 
-add-nvim: ~/.config/nvim/init.vim
+.PHONY: add-nvim
+add-nvim:
 	cat ~/.config/nvim/init.vim > nvim/init.vim
 
-add-zsh: ~/.zshrc
+.PHONY: add-zsh
+add-zsh:
 	cat ~/.zshrc > zsh/.zshrc
