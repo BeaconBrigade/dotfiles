@@ -44,6 +44,7 @@ Plug 'BurntSushi/ripgrep'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'cljoly/telescope-repo.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'kyazdani42/nvim-web-devicons' 
 
 " Color scheme 
 Plug 'arcticicestudio/nord-vim'
