@@ -192,13 +192,12 @@ local opts = {
       }
     },
 }
-lua require('rust-tools').setup(opts)
-
+require('rust-tools').setup(opts)
 EOF
 let g:rustfmt_autosave = 1
 
 " Esling Configure
-require'lspconfig'.eslint.setup{}
+lua require'lspconfig'.eslint.setup{}
 autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 
 " Configure LSP code navigation shortcuts
