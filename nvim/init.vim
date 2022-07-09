@@ -13,6 +13,11 @@ set mouse=a
 set incsearch
 set signcolumn=yes
 
+" html, jsx specific indentation
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+
 call plug#begin('~/.vim/plugged')
 
 " Collection of common configurations for the Nvim LSP client
