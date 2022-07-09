@@ -192,7 +192,8 @@ local opts = {
       }
     },
 }
-require('rust-tools').setup(opts)
+lua require('rust-tools').setup(opts)
+
 EOF
 let g:rustfmt_autosave = 1
 
