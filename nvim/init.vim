@@ -202,7 +202,7 @@ lua require'lspconfig'.eslint.setup{}
 autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 
 " tailwindcss lsp
-require'lspconfig'.tailwindcss.setup{}
+lua require'lspconfig'.tailwindcss.setup{}
 
 " Configure LSP code navigation shortcuts
 " as found in :help lsp
