@@ -17,6 +17,7 @@ set signcolumn=yes
 autocmd FileType html setlocal ts=2 sts=2 sw=2
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType css setlocal ts=2 sts=2 sw=2
 
 call plug#begin('~/.vim/plugged')
 
@@ -196,9 +197,12 @@ require('rust-tools').setup(opts)
 EOF
 let g:rustfmt_autosave = 1
 
-" Esling Configure
+" Eslint Configure
 lua require'lspconfig'.eslint.setup{}
 autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
+
+" tailwindcss lsp
+require'lspconfig'.tailwindcss.setup{}
 
 " Configure LSP code navigation shortcuts
 " as found in :help lsp
