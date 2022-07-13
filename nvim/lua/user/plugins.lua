@@ -91,6 +91,9 @@ return packer.startup(function(use)
     -- Git 
     use 'tpope/vim-fugitive'
 
+    -- null-ls
+    use 'jose-elias-alvarez/null-ls.nvim'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
