@@ -82,7 +82,12 @@ return packer.startup(function(use)
     use 'RRethy/nvim-base16'
 
     -- Treesitter
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+    }
+    use "p00f/nvim-ts-rainbow"
+    use "nvim-treesitter/playground"
 
     -- Lightline
     use 'itchyny/lightline.vim'
