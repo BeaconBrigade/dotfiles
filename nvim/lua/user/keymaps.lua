@@ -33,3 +33,6 @@ keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Open up Explore
 keymap("n", "<leader>ex<cr>", ":Explore", opts)
+
+-- Format document
+keymap("n", "<leader>fm<cr>", ":Format<cr>", opts)
