@@ -8,8 +8,8 @@ nvim:
 
 .PHONY: zsh
 zsh:
-	cat zsh/.zshrc > ~/.zshrc
+	cp zsh/.zshrc ~/.zshrc
 
 .PHONY: tmux
 tmux:
-	cat tmux/.tmux.conf > ~/.tmux.conf
+	cp tmux/.tmux.conf ~/.tmux.conf
