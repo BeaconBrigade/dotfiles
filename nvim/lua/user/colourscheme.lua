@@ -1,1 +1,1 @@
-vim.cmd('colorscheme base16-horizon-dark')
+vim.cmd('colorscheme base16-catppuccin')
