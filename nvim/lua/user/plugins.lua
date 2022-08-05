@@ -104,6 +104,9 @@ return packer.startup(function(use)
   use("numToStr/comment.nvim")
   use("JoosepAlviste/nvim-ts-context-commentstring")
 
+  -- togleterm
+  use("akinsho/toggleterm.nvim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
