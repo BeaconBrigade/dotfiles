@@ -9,6 +9,7 @@ nvim:
 .PHONY: zsh
 zsh:
 	cp zsh/.zshrc ~/.zshrc
+	cp zsh/.p10k.zsh ~/.p10k.zsh
 
 .PHONY: tmux
 tmux:
