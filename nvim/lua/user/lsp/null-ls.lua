@@ -8,12 +8,20 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
+local code_actions = null_ls.builtins.code_actions
+
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.prettier.with({ extra_args = { "--no-semi", "--double-quote", "--jsx-double-quote", "--tab-width 2" } }),
+		formatting.prettier.with({
+			extra_args = { "--no-semi", "--double-quote", "--jsx-double-quote", "--tab-width 2" },
+		}),
 		formatting.black.with({ extra_args = { "--fast" } }),
+		formatting.shellharden,
 		formatting.stylua,
-    diagnostics.flake8
+    formatting.rustfmt.with({ extra_args = { "--edition=2021" } }),
+		diagnostics.shellcheck,
+		diagnostics.flake8,
+		code_actions.shellcheck
 	},
 })
