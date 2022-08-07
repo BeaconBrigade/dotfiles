@@ -100,12 +100,15 @@ return packer.startup(function(use)
 	-- null-ls
 	use("jose-elias-alvarez/null-ls.nvim")
 
-  -- comment
-  use("numToStr/comment.nvim")
-  use("JoosepAlviste/nvim-ts-context-commentstring")
+	-- comment
+	use("numToStr/comment.nvim")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
 
-  -- togleterm
-  use("akinsho/toggleterm.nvim")
+	-- togleterm
+	use("akinsho/toggleterm.nvim")
+
+	-- nice scrolling
+	use("karb94/neoscroll.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
