@@ -19,9 +19,9 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.shellharden,
 		formatting.stylua,
-    formatting.rustfmt.with({ extra_args = { "--edition=2021" } }),
+		formatting.rustfmt.with({ extra_args = { "--edition=2021" } }),
 		diagnostics.shellcheck,
 		diagnostics.flake8,
-		code_actions.shellcheck
+		code_actions.shellcheck,
 	},
 })
