@@ -12,6 +12,7 @@ local options = {
 	showmode = false,
 	updatetime = 100,
 	undofile = true,
+	wrap = false,
 }
 
 for k, v in pairs(options) do
