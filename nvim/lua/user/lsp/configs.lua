@@ -7,7 +7,7 @@ local lspconfig = require("lspconfig")
 
 local servers = {
 	"bashls",
-	"cssls",
+	"tailwindcss",
 	"pyright",
 	"rust_analyzer",
 	"tsserver",
