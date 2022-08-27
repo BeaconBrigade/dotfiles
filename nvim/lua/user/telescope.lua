@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup({
 	defaults = {
@@ -88,10 +89,29 @@ telescope.setup({
 		-- builtin picker
 	},
 	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
+		file_browser = {
+			theme = "ivy",
+			hijack_netrw = true,
+			mappings = {
+				["i"] = {
+					["<C-->"] = fb_actions.goto_parent_dir,
+					["<C-n>"] = fb_actions.create,
+					["<C-r>"] = fb_actions.rename,
+					["<C-D>"] = fb_actions.remove,
+					["<C-y>"] = fb_actions.copy,
+					["<C-m>"] = fb_actions.move,
+				},
+				["n"] = {
+					["-"] = fb_actions.goto_parent_dir,
+					["n"] = fb_actions.create,
+					["r"] = fb_actions.rename,
+					["D"] = fb_actions.remove,
+					["y"] = fb_actions.copy,
+					["m"] = fb_actions.move,
+				},
+			},
+		},
 	},
 })
+
+telescope.load_extension("file_browser")
