@@ -22,6 +22,10 @@ lsp_installer.setup({
 	ensure_installed = servers,
 })
 
+table.remove(servers, 4)
+
+-- rust is special, because of rust-tools
+require("rust-tools").setup(require("user.lsp.settings.rust_analyzer"))
 for _, server in pairs(servers) do
 	local opts = {
 		on_attach = require("user.lsp.handlers").on_attach,

@@ -56,7 +56,7 @@ return packer.startup(function(use)
 	-- Snippet
 	use("hrsh7th/vim-vsnip")
 	use("hrsh7th/vim-vsnip-integ")
-	use("L3MON4D3/LuaSnip") --snippet engine
+	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
@@ -64,6 +64,10 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer")
 	use("j-hui/fidget.nvim")
 	use("m-demare/hlargs.nvim")
+
+	-- Debugging
+	use("mfussenegger/nvim-dap")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
 	-- Rust analyzer
 	use("simrat39/rust-tools.nvim")
