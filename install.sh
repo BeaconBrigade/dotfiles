@@ -95,11 +95,12 @@ install_rust() {
 
     _progress "Installing rust dependencies"
     for dep in "${cargo_deps[@]}"; do
-        cargo install dep
+        cargo install "$dep"
     done
     _progress "Finished installing rust dependencies"
 }
 
+node_deps=(yarn)
 install_node() {
     _progress "Getting node.js"
     curl https://www.npmjs.org/install.sh | sh
@@ -108,6 +109,13 @@ install_node() {
     _progress "Getting nvm"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     _progress "Finished getting nvm"
+
+
+    _progress "Installing npm dependencies"
+    for dep in "${node_deps[@]}"; do
+        npm install "$dep" --global
+    done
+    _progress "Finished installing npm dependencies"
 }
 
 install_oh_my_zsh() {
