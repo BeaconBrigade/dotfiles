@@ -16,6 +16,9 @@ if [[ $1 = "--test" || $1 = "-t" ]]; then
     exit 0
 elif [[ -z $1 ]]; then
     LOG="/dev/null"
+else
+    _progress "Logging to $1"
+    LOG="$1"
 fi
 
 _get_package_manager() {
