@@ -10,5 +10,6 @@ return {
 			mode = "background",
 			debounce = 200,
 		})
+		require("user.lsp.handler").on_attach(client, bufnr)
 	end,
 }
