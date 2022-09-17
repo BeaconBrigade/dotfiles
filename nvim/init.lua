@@ -11,5 +11,5 @@ require("user.treesitter")
 require("user.autopairs")
 require("user.comment")
 require("user.toggleterm")
-require("user.neoscroll")
+--[[ require("user.neoscroll") ]]
 require("user.dapui")
