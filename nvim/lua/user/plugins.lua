@@ -94,10 +94,11 @@ return packer.startup(function(use)
 	use("p00f/nvim-ts-rainbow")
 	use("nvim-treesitter/playground")
 
-	-- Lightline
-	use("itchyny/lightline.vim")
-	use("ryanoasis/vim-devicons")
-
+	-- lualine
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 	-- Git
 	use("tpope/vim-fugitive")
 
