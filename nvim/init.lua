@@ -13,3 +13,4 @@ require("user.toggleterm")
 --[[ require("user.neoscroll") ]]
 require("user.dapui")
 require("user.lualine")
+require("user.aucommands")
