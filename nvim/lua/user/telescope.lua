@@ -106,7 +106,12 @@ telescope.setup({
 				},
 			},
 		},
+		cder = {
+			dir_command = { "fd", "--hidden", ".", os.getenv("HOME") .. "/dev", "--exact-depth=2", "--type=d" },
+			command_executer = { "zsh", "-c" },
+		},
 	},
 })
 
 telescope.load_extension("file_browser")
+telescope.load_extension("cder")

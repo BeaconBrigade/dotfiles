@@ -82,6 +82,7 @@ return packer.startup(function(use)
 	use("sharkdp/fd")
 	use("BurntSushi/ripgrep")
 	use("cljoly/telescope-repo.nvim")
+	use("zane-/cder.nvim")
 
 	-- Colour Scheme
 	use("RRethy/nvim-base16")

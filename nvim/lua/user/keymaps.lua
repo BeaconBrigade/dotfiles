@@ -36,6 +36,7 @@ keymap(
 )
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", opts)
+keymap("n", "<leader>fp", "<cmd>Telescope cder<cr>", opts)
 
 -- Format document
 keymap("n", "<leader>fm<cr>", ":Format<cr>", opts)
