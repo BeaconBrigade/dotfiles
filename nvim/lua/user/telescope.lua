@@ -107,8 +107,16 @@ telescope.setup({
 			},
 		},
 		cder = {
-			dir_command = { "fd", "--hidden", ".", os.getenv("HOME") .. "/dev", "--exact-depth=2", "--type=d" },
+			dir_command = {
+				"fd",
+				".",
+				os.getenv("HOME") .. "/dev",
+				"--exact-depth=2",
+				"--type=d",
+			},
 			command_executer = { "zsh", "-c" },
+			prompt_title = "Switch Projects",
+			previewer_command = "exa -a --icons -1 --git-ignore --colour=always",
 		},
 	},
 })
