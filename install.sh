@@ -63,7 +63,7 @@ _get_package_manager() {
     fi
 }
 
-install_deps=(git fd ripgrep exa clang shellcheck cmake tmux)
+install_deps=(git fd ripgrep exa clang shellcheck cmake tmux fzf)
 _install_basics() {
     for dep in "${install_deps[@]}"; do
         _progress "Installing $dep"

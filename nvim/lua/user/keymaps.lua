@@ -40,3 +40,6 @@ keymap("n", "<leader>fp", "<cmd>Telescope cder<cr>", opts)
 
 -- Format document
 keymap("n", "<leader>fm<cr>", ":Format<cr>", opts)
+
+-- Switch projects
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>", opts)

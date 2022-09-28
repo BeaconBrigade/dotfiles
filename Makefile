@@ -1,17 +1,17 @@
-.PHONY: help
+.PHONY: help nvim zsh tmux scripts
 help:
-	$(error Choose a target, `nvim`, `zsh`, `add-nvim`, `add-zsh`)
+	$(error Choose a target, `nvim`, `zsh`, `tmux`, `scripts`)
 
-.PHONY: nvim
-nvim:
+nvim: ./nvim/*
 	cp -R nvim/* ~/.config/nvim/
 
-.PHONY: zsh
-zsh:
+zsh: ./zsh/*
 	cp zsh/zshrc ~/.zshrc
 	cp zsh/p10k.zsh ~/.p10k.zsh
 	cp zsh/inputrc ~/.inputrc
 
-.PHONY: tmux
-tmux:
+tmux: ./tmux/*
 	cp tmux/tmux.conf ~/.tmux.conf
+
+scripts: ./scripts/*
+	cp scripts/* ~/.local/bin/
