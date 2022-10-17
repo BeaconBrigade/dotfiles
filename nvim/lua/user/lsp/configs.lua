@@ -16,6 +16,7 @@ local servers = {
 	"taplo",
 	"dockerls",
 	"yamlls",
+	"ccls",
 }
 
 lsp_installer.setup({
