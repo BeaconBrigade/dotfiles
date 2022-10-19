@@ -173,33 +173,39 @@ install_python() {
 
 install_neovim() {
     if [ "$LOCAL_OS" = "macos" ]; then
-        brew install neovim --head
+        brew install neovim
         return
     fi
     
-    prevdir=$PWD
-
     # Build from source on linux since the releases on github for linux64 don't include the dev version of neovim
-    _progress "Getting neovim source and dependencies"
-    git clone https://github.com/neovim/neovim.git ~/.neovim
-    sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
+    if [ "$ARCH" = "x86_64" ]; then
+        _progress "Getting neovim source and dependencies"
+        git clone --depth 1 --branch v0.8.0 https://github.com/neovim/neovim.git ~/.neovim
+        sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
 
-    _progress "Building neovim"
-    cd ~/.neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+        _progress "Building neovim"
+        cd ~/.neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 
-    _progress "Installing neovim"
-    if ! sudo make install; then
-        _progress "Neovim installation failed. Exiting"
+        _progress "Installing neovim"
+        if ! sudo make install; then
+            _progress "Neovim installation failed. Exiting"
+            exit 1
+        fi
+    else
+        _progress "Getting neovim by apt repository"
+        curl -o nvim-linux64.deb https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb
+        sudo apt-get install ./nvim-linux64.deb -y
     fi
 
     _progress "Neovim installation complete"
-    cd "$prevdir" && return
+    cd - && return
 }
 
 get_dotfiles() {
     _progress "Downloading dotfiles"
-    git clone https://github.com/BeaconBrigade/dotfiles.git ~/.dotfiles/
-    cd ~/.dotfiles
+    mkdir -p ~/dev/config
+    git clone https://github.com/BeaconBrigade/dotfiles.git ~/dev/config/dotfiles/
+    cd ~/dev/config/dotfiles
     _progress "Copying neovim dotfiles"
     mkdir -p ~/.config/nvim
     make nvim
@@ -207,7 +213,7 @@ get_dotfiles() {
     make zsh
     _progress "Copying tmux dotfiles"
     make tmux
-    cd ~
+    cd -
     _progress "Done getting dotfiles"
 }
 
