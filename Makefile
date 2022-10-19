@@ -1,6 +1,8 @@
 .PHONY: help nvim zsh tmux scripts
 help:
-	$(error Choose a target, `nvim`, `zsh`, `tmux`, `scripts`)
+	$(error Choose a target, `nvim`, `zsh`, `tmux`, `scripts`, `all`)
+
+all: nvim zsh tmux scripts
 
 nvim: ./nvim/*
 	cp -R nvim/* ~/.config/nvim/
