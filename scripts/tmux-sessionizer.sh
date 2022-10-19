@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd --type=d --exact-depth=2 . "$HOME/dev" | fzf)
+    selected=$(fd --type=d --exact-depth=2 . "$HOME/dev" | fzf --preview='exa -1 --icons --colour always {}')
 fi
 
 if [[ -z $selected ]]; then
