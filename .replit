@@ -1,0 +1,6 @@
+run = "docker build . -t dotfiles-test"
+
+[nix]
+
+[nix.channel]
+channel = "stable-22_05"

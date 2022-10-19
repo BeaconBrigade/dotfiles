@@ -26,6 +26,7 @@ _get_package_manager() {
     printf "\nWhich $(tput bold)package manager$(tput sgr0) do you want to use?\n"
     printf "  1. $(tput setaf 2)homebrwew\n$(tput sgr0)"
     printf "  2. $(tput setaf 3)apt$(tput sgr0)\n"
+    printf "  3. $(tput setaf 4)apk$(tput sgr0)\n"
     read -r package_option
 
     # Invalid option handling
@@ -173,7 +174,10 @@ install_python() {
 
 install_neovim() {
     if [ "$LOCAL_OS" = "macos" ]; then
-        brew install neovim
+        eval "$INSTALL neovim"
+        return
+    elif [ "$INSTALL" =~ "apk" ]; then
+        apk add neovim=0.8.0
         return
     fi
     
@@ -181,7 +185,7 @@ install_neovim() {
     if [ "$ARCH" = "x86_64" ]; then
         _progress "Getting neovim source and dependencies"
         git clone --depth 1 --branch v0.8.0 https://github.com/neovim/neovim.git ~/.neovim
-        sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
+        sudo apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
 
         _progress "Building neovim"
         cd ~/.neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
