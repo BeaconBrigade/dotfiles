@@ -30,7 +30,7 @@ _get_package_manager() {
     read -r package_option
 
     # Invalid option handling
-    if [[ 1 -ne package_option && 2 -ne package_option ]]; then
+    if [[ 1 -ne package_option && 2 -ne package_option && 3 -ne package_option ]]; then
         _progress "Invalid package manager option. Exiting"
         exit 1
     fi
@@ -58,9 +58,12 @@ _get_package_manager() {
         fi
         INSTALL="brew install"
         _progress "Using brew"
-    else
+    elif [[ 2 = "$package_option" ]]; then
         INSTALL="sudo apt-get install -y"
         _progress "Using apt-get"
+    else
+        INSTALL="apk add"
+        _progress "Using apk"
     fi
 }
 
@@ -154,7 +157,7 @@ install_oh_my_zsh() {
 python_deps=(guizero pygame thefuck virtualenv black flake8)
 install_python() {
     _progress "Installing python3"
-    if [ "$LOCAL_OS" = "linux" ]; then
+    if [[ "$LOCAL_OS" = "linux" && "$INSTALL" =~ "apt" ]]; then
         sudo apt-get install software-properties-common
         sudo add-apt-repository ppa:deadsnakes/ppa
         sudo apt-get update
@@ -176,13 +179,13 @@ install_neovim() {
     if [ "$LOCAL_OS" = "macos" ]; then
         eval "$INSTALL neovim"
         return
-    elif [ "$INSTALL" =~ "apk" ]; then
+    elif [[ "$INSTALL" =~ "apk" ]]; then
         apk add neovim=0.8.0
         return
     fi
     
     # Build from source on linux since the releases on github for linux64 don't include the dev version of neovim
-    if [ "$ARCH" = "x86_64" ]; then
+    if [ ! "$ARCH" = "x86_64" ]; then
         _progress "Getting neovim source and dependencies"
         git clone --depth 1 --branch v0.8.0 https://github.com/neovim/neovim.git ~/.neovim
         sudo apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
@@ -209,15 +212,16 @@ get_dotfiles() {
     _progress "Downloading dotfiles"
     mkdir -p ~/dev/config
     git clone https://github.com/BeaconBrigade/dotfiles.git ~/dev/config/dotfiles/
-    cd ~/dev/config/dotfiles
     _progress "Copying neovim dotfiles"
     mkdir -p ~/.config/nvim
-    make nvim
+    make -C ~/dev/config/dotfiles nvim
     _progress "Copying zsh dotfiles"
-    make zsh
+    make -C ~/dev/config/dotfiles zsh
     _progress "Copying tmux dotfiles"
-    make tmux
-    cd -
+    make -C ~/dev/config/dotfiles tmux
+    _progress "Copying scripts"
+    mkdir -p ~/.local/bin
+    make -C ~/dev/config/dotfiles scripts
     _progress "Done getting dotfiles"
 }
 
