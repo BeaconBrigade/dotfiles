@@ -149,9 +149,9 @@ install_oh_my_zsh() {
         _progress "Finished installing oh-my-zsh"
     fi
 
-    _progress "Getting p10k for zsh"
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
-    _progress "Finished getting p10k"
+    # _progress "Getting p10k for zsh"
+    # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
+    # _progress "Finished getting p10k"
 }
 
 python_deps=(guizero pygame thefuck virtualenv black flake8)
