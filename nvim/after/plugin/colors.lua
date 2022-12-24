@@ -2,16 +2,17 @@ function Color(color)
     color = color or "rose-pine"
     vim.cmd.colorscheme(color)
 
-    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
-    -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "Folded", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "SpecialKey", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+    -- vim.cmd([[
+    --     hi Normal guibg=none ctermbg=none
+    --     hi LineNr guibg=none ctermbg=none
+    --     hi Folded guibg=none ctermbg=none
+    --     hi NonText guibg=none ctermbg=none
+    --     hi SpecialKey guibg=none ctermbg=none
+    --     hi VertSplit guibg=none ctermbg=none
+    --     hi SignColumn guibg=none ctermbg=none
+    --     hi EndOfBuffer guibg=none ctermbg=none
+    --     hi! link NormalFloat Normal
+    -- ]])
 end
 
 Color()

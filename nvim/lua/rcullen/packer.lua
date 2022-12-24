@@ -34,6 +34,18 @@ return require('packer').startup(function(use)
             require('lualine').setup({})
         end
     })
+    use({
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    })
+    use({
+        'windwp/nvim-autopairs',
+        config = function()
+            require("nvim-autopairs").setup({})
+        end
+    })
 
     use({
         'VonHeikemen/lsp-zero.nvim',

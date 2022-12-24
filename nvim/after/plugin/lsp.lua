@@ -2,6 +2,14 @@ local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
 
+lsp.ensure_installed({
+    'tsserver',
+    'eslint',
+    'sumneko_lua',
+    'rust_analyzer',
+    'pyright',
+})
+
 lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
@@ -12,12 +20,17 @@ lsp.configure('sumneko_lua', {
     }
 })
 
-lsp.ensure_installed({
-    'tsserver',
-    'eslint',
-    'sumneko_lua',
-    'rust_analyzer',
-    'pyright',
+lsp.configure('rust-analyzer', {
+    settings = {
+        ['rust-analyzer'] = {
+            imports = {
+                prefix = 'crate',
+            },
+            checkOnSave = {
+                command = 'clippy',
+            }
+        }
+    }
 })
 
 lsp.nvim_workspace({
@@ -41,10 +54,10 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>gr', ':Telescope lsp_references<CR>', opts)
     vim.keymap.set('n', '<leader>gn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>fm', function() vim.lsp.buf.format({ async = true }) end, opts)
-    vim.keymap.set('i', '<leader>gs', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>gs', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>gws', vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_next, opts)
