@@ -18,6 +18,11 @@ return require('packer').startup(function(use)
     })
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use({
+        'windwp/nvim-ts-autotag',
+        requires = { { 'nvim-treesitter' } },
+        config = function() require('nvim-ts-autotag').setup() end
+    })
     use('nvim-treesitter/playground')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
