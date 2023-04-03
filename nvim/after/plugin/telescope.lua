@@ -4,11 +4,13 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
-local fb_actions = require("telescope").extensions.file_browser.actions
+local builtin = require("telescope.builtin")
+
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
@@ -43,6 +45,7 @@ telescope.setup({
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-l>"] = actions.complete_tag,
 				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+				-- ["<C-[>"] = actions.close,
 			},
 
 			n = {
@@ -79,47 +82,4 @@ telescope.setup({
 			},
 		},
 	},
-	pickers = {
-		colorscheme = {
-			enable_preview = true,
-		},
-	},
-	extensions = {
-		file_browser = {
-			theme = "ivy",
-			mappings = {
-				["i"] = {
-					["<C-->"] = fb_actions.goto_parent_dir,
-					["<C-n>"] = fb_actions.create,
-					["<C-r>"] = fb_actions.rename,
-					["<C-D>"] = fb_actions.remove,
-					["<C-y>"] = fb_actions.copy,
-					["<C-m>"] = fb_actions.move,
-				},
-				["n"] = {
-					["-"] = fb_actions.goto_parent_dir,
-					["n"] = fb_actions.create,
-					["r"] = fb_actions.rename,
-					["D"] = fb_actions.remove,
-					["y"] = fb_actions.copy,
-					["m"] = fb_actions.move,
-				},
-			},
-		},
-		cder = {
-			dir_command = {
-				"fd",
-				".",
-				os.getenv("HOME") .. "/dev",
-				"--exact-depth=2",
-				"--type=d",
-			},
-			command_executer = { "zsh", "-c" },
-			prompt_title = "Switch Projects",
-			previewer_command = "exa -a --icons -1 --git-ignore --colour=always",
-		},
-	},
 })
-
-telescope.load_extension("file_browser")
-telescope.load_extension("cder")
