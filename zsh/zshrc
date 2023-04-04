@@ -14,7 +14,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # thefuck
-export PATH="$PATH:~/.local/bin/"
+export PATH="$PATH:$HOME/.local/bin/"
 eval $(thefuck --alias)
 eval $(thefuck --alias fuck)
 
@@ -167,6 +167,3 @@ fi
 if [ $(uname) = "Darwin" ]; then
     export PATH="/usr/local/opt/libpq/bin:$PATH"
 fi
-
-
-export PATH="$PATH:$HOME/.local/bin/"
