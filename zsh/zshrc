@@ -167,3 +167,6 @@ fi
 if [ $(uname) = "Darwin" ]; then
     export PATH="/usr/local/opt/libpq/bin:$PATH"
 fi
+
+# Go
+export PATH="$HOME/go/bin:$PATH"
