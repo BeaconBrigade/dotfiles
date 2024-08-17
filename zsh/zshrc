@@ -16,6 +16,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # make sure brew is available
 export PATH="$PATH:/opt/homebrew/bin/"
 
+# python things
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+
 # thefuck
 export PATH="$PATH:$HOME/.local/bin/"
 eval $(thefuck --alias)
