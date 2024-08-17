@@ -13,6 +13,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# make sure brew is available
+export PATH="$PATH:/opt/homebrew/bin/"
+
 # thefuck
 export PATH="$PATH:$HOME/.local/bin/"
 eval $(thefuck --alias)
