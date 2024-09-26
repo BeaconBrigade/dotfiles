@@ -17,3 +17,10 @@ tmux: ./tmux/*
 
 scripts: ./scripts/*
 	cp scripts/* ~/.local/bin/
+
+stow-setup: ./nvim/* ./zsh/zshrc ./tmux/tmux.conf ./scripts/*
+	cd stow; ./stow-setup.sh; stow -t $(HOME) .
+
+stow-rm:
+	cd stow; stow -t $(HOME) -D .; git clean -x . -f
+	
