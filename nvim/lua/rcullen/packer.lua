@@ -55,7 +55,6 @@ return require('packer').startup(function(use)
 
     use({
         'VonHeikemen/lsp-zero.nvim',
-        tag = "v2.x",
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
