@@ -11,7 +11,7 @@ local lsp_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>fm', function() vim.lsp.buf.format({ async = true }) end, opts)
     vim.keymap.set('n', '<leader>gh', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>gws', vim.lsp.buf.workspace_symbol, opts)
-    vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, opts)
 end
