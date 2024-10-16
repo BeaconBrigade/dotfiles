@@ -63,8 +63,8 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = cmp.mapping.preset.insert({
-    ['<Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<S-Tab>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-K>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-J>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
