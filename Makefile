@@ -1,4 +1,4 @@
-.PHONY: help nvim zsh tmux scripts
+.PHONY: help nvim zsh tmux scripts stow-setup stow-rm stow
 help:
 	$(error Choose a target, `nvim`, `zsh`, `tmux`, `scripts`, `all`)
 
@@ -24,3 +24,7 @@ stow-setup: ./nvim/* ./zsh/zshrc ./tmux/tmux.conf ./scripts/*
 stow-rm:
 	cd stow; stow -t $(HOME) -D .; git clean -x . -f
 	
+stow: ./nvim/* ./zsh/zshrc ./tmux/tmux.conf ./scripts/*
+	cd stow; stow -t $(HOME) -D .; git clean -x . -f
+	cd stow; ./stow-setup.sh; stow -t $(HOME) .
+

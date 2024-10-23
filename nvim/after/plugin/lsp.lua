@@ -26,7 +26,7 @@ lsp.extend_lspconfig({
 local lspconfig = require('lspconfig')
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd' },
+    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd', 'pyright' },
     handlers = {
         ['lua_ls'] = function()
             lspconfig.lua_ls.setup({
