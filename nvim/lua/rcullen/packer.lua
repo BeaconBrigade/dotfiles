@@ -75,4 +75,11 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     })
+
+    use({
+        'lervag/vimtex',
+        config = function()
+            vim.g.vimtex_view_method = 'open'
+        end
+    })
 end)
