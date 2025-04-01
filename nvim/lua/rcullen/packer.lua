@@ -34,10 +34,7 @@ return require('packer').startup(function(use)
     })
     use({
         "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-            require('lualine').setup({})
-        end
+        requires = { "kyazdani42/nvim-web-devicons" }
     })
     use({
         'numToStr/Comment.nvim',
@@ -80,7 +77,7 @@ return require('packer').startup(function(use)
         'lervag/vimtex',
         config = function()
             vim.g.vimtex_view_method = 'open'
-            vim.g.vimtex_compiler_latexmk_engines = {'_', 'lualatex'}
+            vim.g.vimtex_compiler_latexmk_engines = { '_', 'lualatex' }
         end
     })
 end)
