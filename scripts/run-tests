@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [[ $1 == "" || $2 == "" ]]; then
+    echo "Usage: $0 command testSetFile" 1>&2
+    exit 1
+fi
+
+command=${1}
+stems=$(cat ${2})
+
+for stem in ${stems}; do
+    output=$(mktemp)
+    ${command} $(cat ${stem}.args) < ${stem}.in > ${output}
+
+    if diff ${output} ${stem}.out > /dev/null; then
+        # they match
+        echo "Test ${stem} passed"
+    else
+        echo "Test ${stem} failed"
+        echo "Expected output:"
+        cat ${stem}.out
+        echo "Actual output:"
+        cat ${output}
+    fi
+
+    rm ${output}
+done
+

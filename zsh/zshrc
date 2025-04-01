@@ -179,3 +179,7 @@ fi
 export PATH="$HOME/go/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/game-porting-toolkit/bin:$PATH"
+
+# set brew to arm64 mode
+eval "$(/opt/homebrew/bin/brew shellenv)"
