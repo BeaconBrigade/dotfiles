@@ -75,6 +75,7 @@ return require('packer').startup(function(use)
 
     use({
         'lervag/vimtex',
+        branch = 'v2.15',
         config = function()
             vim.g.vimtex_view_method = 'open'
             vim.g.vimtex_compiler_latexmk_engines = { '_', 'lualatex' }
