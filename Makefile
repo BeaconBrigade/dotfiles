@@ -1,4 +1,4 @@
-.PHONY: help nvim zsh tmux scripts stow-setup stow-rm stow
+.PHONY: help nvim zsh tmux scripts stow-setup stow-rm stow auto-import
 help:
 	$(error Choose a target, `nvim`, `zsh`, `tmux`, `scripts`, `all`)
 
@@ -28,6 +28,7 @@ stow: ./nvim/* ./zsh/zshrc ./tmux/tmux.conf ./scripts/*
 	cd stow; stow -t $(HOME) -D .; git clean -x . -f
 	cd stow; ./stow-setup.sh; stow -t $(HOME) .
 
-auto-import-plist: ./scripts/com.rcullen.auto-import.plist
+auto-import: ./scripts/com.rcullen.auto-import.plist ./scripts/auto-import.apple-script
+	osacompile -o ./scripts/auto-import.scpt ./scripts/auto-import.apple-script
 	cp scripts/com.rcullen.auto-import.plist ~/Library/LaunchAgents/com.rcullen.auto-import.plist
 
