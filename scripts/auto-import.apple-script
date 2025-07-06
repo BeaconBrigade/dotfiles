@@ -1,0 +1,57 @@
+-- Configuration
+set importRoot to "/Users/rcullen/Pictures/Canon EOS 60D/darktable_exported"
+set importRootAlias to POSIX file importRoot as alias
+set validExtensions to {"jpg", "jpeg", "png", "heic", "JPG", "JPEG", "PNG", "HEIC"}
+
+-- Get subfolders
+tell application "Finder"
+	set subfolders to folders of folder importRootAlias
+end tell
+
+repeat with aFolder in subfolders
+	set folderAlias to aFolder as alias
+	set folderPath to POSIX path of folderAlias
+	set importedLogPath to folderPath & ".imported.txt"
+	
+	-- Get folder name for album
+	tell application "Finder"
+		set albumName to name of folderAlias
+	end tell
+	
+	-- Read list of already imported files
+	set importedFiles to {}
+	try
+		set importedFiles to paragraphs of (read POSIX file importedLogPath)
+	end try
+	
+	-- Scan files in folder
+	set newImagePaths to {}
+	tell application "System Events"
+		set allFiles to files of folder folderPath
+		repeat with aFile in allFiles
+			set filePath to POSIX path of (aFile as alias)
+			set ext to name extension of aFile
+			set fileName to name of aFile
+			if ext is in validExtensions and fileName is not in importedFiles then
+				set end of newImagePaths to filePath
+			end if
+		end repeat
+	end tell
+	
+	if newImagePaths is not {} then
+		tell application "Photos"
+			activate
+			if not (exists album albumName) then
+				set newAlbum to make new album named albumName
+			else
+				set newAlbum to album albumName
+			end if
+			import newImagePaths into newAlbum
+		end tell
+		
+		-- Append newly imported files to the log
+		repeat with eachPath in newImagePaths
+			do shell script "echo " & quoted form of (do shell script "basename " & quoted form of eachPath) & " >> " & quoted form of importedLogPath
+		end repeat
+	end if
+end repeat

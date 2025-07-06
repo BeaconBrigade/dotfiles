@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.rcullen.auto-import</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>/opt/homebrew/bin/fswatch -0 -r '/Users/rcullen/Pictures/Canon EOS 60D/darktable_exported' | /usr/bin/xargs -0 -n 1 '/Users/rcullen/.local/bin/run-auto-import.sh'</string>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/auto-import.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/auto-import.err</string>
+
+    <key>KeepAlive</key>
+    <false/>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>

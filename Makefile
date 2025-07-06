@@ -28,3 +28,6 @@ stow: ./nvim/* ./zsh/zshrc ./tmux/tmux.conf ./scripts/*
 	cd stow; stow -t $(HOME) -D .; git clean -x . -f
 	cd stow; ./stow-setup.sh; stow -t $(HOME) .
 
+auto-import-plist: ./scripts/com.rcullen.auto-import.plist
+	cp scripts/com.rcullen.auto-import.plist ~/Library/LaunchAgents/com.rcullen.auto-import.plist
+
