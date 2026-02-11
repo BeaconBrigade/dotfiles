@@ -7,9 +7,7 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/bin/bash</string>
-        <string>-c</string>
-        <string>/opt/homebrew/bin/fswatch -0 -r '/Users/rcullen/Pictures/Canon EOS 60D/darktable_exported' | /usr/bin/xargs -0 -n 1 '/Users/rcullen/.local/bin/run-auto-import.sh'</string>
+        <string>/Users/rcullen/.local/bin/auto-import-watcher.sh</string>
     </array>
 
     <key>StandardOutPath</key>
