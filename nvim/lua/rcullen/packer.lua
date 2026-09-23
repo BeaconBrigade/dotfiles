@@ -5,13 +5,14 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        'nvim-telescope/telescope.nvim', tag = 'v0.2.1',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
+        tag = 'v3.0.2',
         config = function()
             vim.cmd('colorscheme rose-pine')
         end
@@ -23,7 +24,7 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-treesitter' } },
         config = function() require('nvim-ts-autotag').setup() end
     })
-    use('nvim-treesitter/playground')
+    -- use('nvim-treesitter/playground')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
     use({
@@ -75,7 +76,7 @@ return require('packer').startup(function(use)
 
     use({
         'lervag/vimtex',
-        branch = 'v2.15',
+        tag = 'v2.18',
         config = function()
             vim.g.vimtex_view_method = 'open'
             vim.g.vimtex_compiler_latexmk_engines = { '_', 'lualatex' }
