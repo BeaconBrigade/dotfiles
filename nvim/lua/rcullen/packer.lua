@@ -38,9 +38,9 @@ return require('packer').startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" }
     })
     use({
-        'numToStr/Comment.nvim',
+        'nvim-mini/mini.nvim',
         config = function()
-            require('Comment').setup()
+            require('mini.comment').setup()
         end
     })
     use({
